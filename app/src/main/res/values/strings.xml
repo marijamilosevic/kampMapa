@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Kamp Mapa</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="mapa">Mapa</string>
+    <string name="lista">Lista</string>
+    <string name="navigacija">Navigacija</string>
 </resources>

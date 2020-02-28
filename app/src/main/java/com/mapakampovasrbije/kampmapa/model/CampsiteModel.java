@@ -1,6 +1,10 @@
 package com.mapakampovasrbije.kampmapa.model;
 
-public class CampsiteModel {
+import android.database.Cursor;
+
+import java.io.Serializable;
+
+public class CampsiteModel implements Serializable {
 
     /**
      * Unique id.
@@ -20,18 +24,42 @@ public class CampsiteModel {
     /**
      * Campsite website url.
      */
-    private String websiteUrl;
+    private String website;
+
+    /**
+     * Campsite address latitude coordinates.
+     */
+    private double latitude;
+
+    /**
+     * Campsite address longitude coordinates.
+     */
+    private double longitude;
 
     /**
      * Campsite address.
      */
-    private Address address;
+    private String address;
 
-    public CampsiteModel(int id, String name, String description, Address address) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.address = address;
+    /**
+     * Campsite phone number.
+     */
+    private String phoneNumber;
+
+    public CampsiteModel() {
+    }
+
+    public static CampsiteModel fromCursor(Cursor cursor) {
+        CampsiteModel model = new CampsiteModel();
+        model.setId(cursor.getInt(0));
+        model.setName(cursor.getString(1));
+        model.setDescription(cursor.getString(2));
+        model.setWebsite(cursor.getString(3));
+        model.setLatitude(cursor.getDouble(4));
+        model.setLongitude(cursor.getDouble(5));
+        model.setAddress(cursor.getString(6));
+        model.setPhoneNumber(cursor.getString(7));
+        return model;
     }
 
     public int getId() {
@@ -58,11 +86,43 @@ public class CampsiteModel {
         this.description = description;
     }
 
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
